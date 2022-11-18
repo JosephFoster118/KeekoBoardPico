@@ -24,7 +24,7 @@ KeekoMessage::KeekoMessage(const std::unique_ptr<uint8_t[]>& raw, size_t size)
         {
             throw KeekoMessageMalformed{};
         }
-        littleEndianCopy(&element_crc, raw.get() + pos, sizeof(element_crc));
+        littleEndianCopy(&element_crc, raw.get() + pos, 4);
         pos += sizeof(element_crc);
 
         uint8_t type;
@@ -95,13 +95,14 @@ KeekoMessage::KeekoMessage(const std::unique_ptr<uint8_t[]>& raw, size_t size)
             }break;
             case variant_index<KeekoMessageValue, std::string>():
             {
-                KeekoMessageStringSize str_size = *(reinterpret_cast<KeekoMessageStringSize*>(reinterpret_cast<void*>(raw.get() + pos)));
+                KeekoMessageStringSize str_size;
+                littleEndianCopy(&str_size, raw.get() + pos, sizeof(KeekoMessageStringSize));
                 pos += sizeof(KeekoMessageStringSize);
                 if(pos + str_size >= size)
                 {
                     throw KeekoMessageMalformed{};
                 }
-                elements[element_crc] = std::string{reinterpret_cast<char*>(reinterpret_cast<void*>(raw.get() + pos)) + pos, str_size};
+                elements[element_crc] = std::string{reinterpret_cast<char*>(reinterpret_cast<void*>(raw.get() + pos)), str_size};
                 pos += str_size;
             }break;
         }

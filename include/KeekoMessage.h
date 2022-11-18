@@ -79,8 +79,9 @@ private:
     }
 
     template <typename T>
-    void readElementFromRaw(const std::unique_ptr<uint8_t[]>& raw, size_t& pos, uint16_t element_crc)
-    {
+    void readElementFromRaw(const std::unique_ptr<uint8_t[]>& raw, size_t& pos, uint32_t element_crc)
+    {   
+        T value = *(reinterpret_cast<T*>(reinterpret_cast<void*>(raw.get() + pos)));
         elements[element_crc] = *(reinterpret_cast<T*>(reinterpret_cast<void*>(raw.get() + pos)));
         pos += sizeof(T);
     }
@@ -100,7 +101,7 @@ struct KeekoMessageChecksumMismatch : std::exception
         this->given_checksum = given_checksum;
         //std::ostringstream builder;
         //builder << "Checksum mismatch. Real [" << real_checksum << "] Given [" << given_checksum << "]";
-        error_string = "builder.str()";
+        error_string = "builder.str()";//TODO: Use sprintf since iomanip and sstream are bloated
     }
     inline const char* what() const throw ()
     {
@@ -118,7 +119,7 @@ struct KeekoMessageInvalidLength : std::exception
         //std::ostringstream builder;
        // builder << "Invalid message length. Must be greater than " << KeekoMessage::KEEKO_MESSAGE_MINIMUM_SIZE
        // << " but was " << length;
-        error_string = "builder.str()";
+        error_string = "builder.str()";//TODO: Use sprintf since iomanip and sstream are bloated
     }
     inline const char* what() const throw ()
     {
