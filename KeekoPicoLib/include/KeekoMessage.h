@@ -11,6 +11,9 @@
 
 #include "CRC.h"
 
+namespace Keeko
+{
+
 class KeekoMessage
 {
 public:
@@ -139,3 +142,5 @@ struct KeekoMessageMalformed : std::exception
         return error_string.c_str();
     }
 };
+
+}

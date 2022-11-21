@@ -2,7 +2,8 @@
 
 #include <cstring>
 #include <type_traits>
-
+namespace Keeko
+{
 
 KeekoMessage::KeekoMessage(const std::unique_ptr<uint8_t[]>& raw, size_t size)
 {
@@ -261,5 +262,7 @@ void KeekoMessage::littleEndianCopy(void* dest,const void* src, size_t size)
             reinterpret_cast<uint8_t*>(dest)[i] = reinterpret_cast<const uint8_t*>(src)[size - 1 - i];
         }
     }
+}
+
 }
 
