@@ -26,9 +26,11 @@ include_directories(Config)
 set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 pico_sdk_init()
 
+add_subdirectory(KeekoGeneralLib)
 add_subdirectory(KeekoPicoLib)
 add_subdirectory(KeekoBoardPico)
 
-add_dependencies(KeekoBoardPico KeekoPicoLib)
+add_dependencies(KeekoPicoLib KeekoGeneralLib)
+add_dependencies(KeekoBoardPico KeekoPicoLib KeekoGeneralLib)
 
 

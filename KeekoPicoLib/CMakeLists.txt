@@ -15,7 +15,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(include ${FREERTOS_CFG_DIRECTORY})
 set(SOURCES
-    src/KeekoMessage.cpp
     src/Uart.cpp
     src/BoardUart.cpp
 )
@@ -28,4 +27,5 @@ target_link_libraries(${PROJECT_NAME}
     tinyusb_host
     tinyusb_device
     tinyusb_board
+    KeekoGeneralLib
 )
