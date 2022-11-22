@@ -6,7 +6,8 @@
 #include <array>
 #include <vector>
 #include <string_view>
-
+namespace Keeko
+{
 class CRC
 {
 public:
@@ -105,3 +106,4 @@ public:
 private:
 
 };
+}
