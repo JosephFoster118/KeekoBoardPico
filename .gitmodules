@@ -1,0 +1,3 @@
+[submodule "KeekoGeneralLib"]
+	path = KeekoGeneralLib
+	url = git@github.com:JosephFoster118/KeekoGeneralLib.git
