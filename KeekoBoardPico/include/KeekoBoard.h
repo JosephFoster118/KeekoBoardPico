@@ -34,9 +34,27 @@ public:
     {
         reinterpret_cast<KeekoBoard*>(ptr)->blinkTask();
     };
+
+    void robotCommsTask();
+    static void robotCommsStarter(void* ptr)
+    {
+        reinterpret_cast<KeekoBoard*>(ptr)->robotCommsTask();
+    }
+
+    void tusbTask();
+    static void tusbTaskStarter(void* ptr)
+    {
+        reinterpret_cast<KeekoBoard*>(ptr)->tusbTask();
+    }
+
     void runSceduler() noexcept;
 
 private:
     TaskHandle_t blink_task_handle;
     BaseType_t blink_task{0};
+    TaskHandle_t robot_comms_task_handle;
+    BaseType_t robot_comms_task{0};
+    TaskHandle_t tusb_task_handle;
+    BaseType_t tusb_task{0};
+    
 };

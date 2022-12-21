@@ -17,6 +17,7 @@ include_directories(include ${FREERTOS_CFG_DIRECTORY})
 set(SOURCES
     src/Uart.cpp
     src/BoardUart.cpp
+    src/USBUart.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})

@@ -21,7 +21,7 @@
 #include <string_view>
 
 #include "KeekoBoard.h"
-#include "KeekoMessage.h"
+#include "Keeko/KeekoMessage.h"
 
 void UARTPrintf(uart_inst_t * port,const std::string_view& format, ...);
 
@@ -100,9 +100,9 @@ int main(void)
     // TaskHandle_t usb_task_handle = nullptr;
     // BaseType_t blink_task = xTaskCreate(blinkTask, "PICO_LED_TASK",  128, NULL, 1, &blink_task_hable);
     // BaseType_t usb_task = xTaskCreate(usbTask, "USB_TASK",  128, NULL, 1, &usb_task_handle);
-    Keeko::KeekoMessage msg{};
-    msg.addElement(123, std::string{"hello"});
-    auto [foo, size] = msg.getRaw();
+    // Keeko::KeekoMessage msg{};
+    // msg.addElement(123, std::string{"hello"});
+    // auto [foo, size] = msg.getRaw();
     KeekoBoard board{};
     board.runSceduler();
     //If we get here things have gone very wrong
