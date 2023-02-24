@@ -18,6 +18,8 @@ set(SOURCES
     src/Uart.cpp
     src/BoardUart.cpp
     src/USBUart.cpp
+    src/DigitalIO.cpp
+    src/BoardDigitalIO.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})

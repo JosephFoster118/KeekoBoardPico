@@ -16,7 +16,10 @@ public:
 
     virtual bool isReadable();
     virtual bool isWritable();
-    virtual void write(const std::shared_ptr<uint8_t[]> data, size_t size) ;
+    uint32_t availableWrite();
+    virtual void write(const std::shared_ptr<uint8_t[]>& data, size_t size);
+    virtual void write(const void* data, size_t size);
+    virtual void write(const std::string& data);
     virtual std::tuple<std::unique_ptr<uint8_t[]>, size_t> read();
 
 protected:

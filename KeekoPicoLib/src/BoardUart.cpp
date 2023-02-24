@@ -30,10 +30,16 @@ bool BoardUart::isWritable()
     return uart_is_writable(uart_ptr);
 }
 
-void BoardUart::write(const std::shared_ptr<uint8_t[]> data, size_t size)
+void BoardUart::write(const std::shared_ptr<uint8_t[]>& data, size_t size)
 {
     //TODOJ: Check is is writable
     uart_write_blocking(uart_ptr, data.get(), size);
+}
+
+void BoardUart::write(const void* data, size_t size)
+{
+    //TODOJ: Check is is writable
+    uart_write_blocking(uart_ptr, reinterpret_cast<const uint8_t*>(data), size);
 }
 
 std::tuple<std::unique_ptr<uint8_t[]>, size_t> BoardUart::read()

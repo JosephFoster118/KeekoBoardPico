@@ -32,8 +32,8 @@
 // #define xPortPendSVHandler      isr_pendsv
 // #define xPortSysTickHandler     isr_systick
 
-// #define configUSE_PREEMPTION                    1           // Allow tasks to be pre-empted
-// #define configUSE_TIME_SLICING                  1           // Allow FreeRTOS to switch tasks at each tick
+#define configUSE_PREEMPTION                    1           // Allow tasks to be pre-empted
+#define configUSE_TIME_SLICING                  1           // Allow FreeRTOS to switch tasks at each tick
 // #define configUSE_PORT_OPTIMISED_TASK_SELECTION 0
 // #define configUSE_TICKLESS_IDLE                 0
 // #define configCPU_CLOCK_HZ                      133000000   // 133MHz for RP2040

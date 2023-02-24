@@ -139,3 +139,21 @@ void tud_hid_set_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_
     (void) buffer;
     (void) bufsize;
 }
+
+void tud_hid_report_complete_cb(uint8_t instance, uint8_t const* report, uint16_t len)
+{
+  (void) instance;
+  (void) len;
+
+  uint8_t next_report_id = report[0] + 1u;
+
+  if (next_report_id < REPORT_ID_COUNT)
+  {
+        hid_gamepad_report_t report =
+        {
+            .x   = 0, .y = 0, .z = 0, .rz = 0, .rx = 0, .ry = 0,
+            .hat = 0, .buttons = 1
+        };
+        tud_hid_report(REPORT_ID_GAMEPAD, &report, sizeof(report));
+  }
+}

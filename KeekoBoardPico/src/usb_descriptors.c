@@ -178,9 +178,10 @@ uint8_t const * tud_descriptor_configuration_cb(uint8_t index)
 char const* string_desc_arr [] =
 {
   (const char[]) { 0x09, 0x04 }, // 0: is supported language is English (0x0409)
-  "FRC 231",                     // 1: Manufacturer
+  "High Voltage",                     // 1: Manufacturer
   "Keeko Board",              // 2: Product
-  "123445",                      // 3: Serials, should use chip ID
+  "231",                      // 3: Serials, should use chip ID
+  "KeekoBoard CDC",                 // 4: CDC Interface                   // 3: Serials, should use chip ID
 };
 
 static uint16_t _desc_str[32];

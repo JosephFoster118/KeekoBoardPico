@@ -19,13 +19,30 @@ bool USBUart::isReadable()
 
 bool USBUart::isWritable()
 {
+    return tud_cdc_n_write_available(id) >= CFG_TUD_CDC_TX_BUFSIZE;//TODO: Correct
+}
+
+uint32_t USBUart::availableWrite()
+{
     return tud_cdc_n_write_available(id);
 }
 
-void USBUart::write(const std::shared_ptr<uint8_t[]> data, size_t size)
+void USBUart::write(const std::shared_ptr<uint8_t[]>& data, size_t size)
 {
     //TODOJ: Check is is writable
     tud_cdc_n_write(id, data.get(), size);
+    tud_cdc_n_write_flush(id);
+}
+
+void USBUart::write(const void* data, size_t size)
+{
+    tud_cdc_n_write(id, data, size);
+    tud_cdc_n_write_flush(id);
+}
+
+void USBUart::write(const std::string& data)
+{
+    Uart::write(data);
 }
 
 std::tuple<std::unique_ptr<uint8_t[]>, size_t> USBUart::read()
