@@ -130,7 +130,7 @@ private:
             (
                 10, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         },
         ControllerButtonInput{// LIFT_MIDDLE
@@ -139,7 +139,7 @@ private:
             (
                 11, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         },
         ControllerButtonInput{//LIFT_BOTTOM
@@ -148,7 +148,7 @@ private:
             (
                 12, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         },
         ControllerButtonInput{//INTAKE
@@ -157,7 +157,7 @@ private:
             (
                 13, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         },
         ControllerButtonInput{//OUTTAKE
@@ -166,7 +166,7 @@ private:
             (
                 16, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         },
         ControllerButtonInput{//ARM_EXTEND
@@ -175,7 +175,7 @@ private:
             (
                 17, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         },
         ControllerButtonInput{//LIFT_ABSOLUTE
@@ -184,7 +184,7 @@ private:
             (
                 18, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         },
         ControllerButtonInput{//CUBE_NOTIFY
@@ -193,7 +193,7 @@ private:
             (
                 19, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         },
         ControllerButtonInput{//CONE_NOTIFY
@@ -202,7 +202,7 @@ private:
             (
                 22, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
         }
     };
