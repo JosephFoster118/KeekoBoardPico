@@ -121,26 +121,92 @@ private:
         std::shared_ptr<Keeko::DigitalIO> gpio_input;
     };
     
-    std::array<ControllerButtonInput, 2> CONTROLLER_BUTTON_MAP = 
+    std::array<ControllerButtonInput, 9> CONTROLLER_BUTTON_MAP = 
     {
-        ControllerButtonInput{
+
+        ControllerButtonInput{// LIFT_TOP
             0, //Controller button ID
             std::make_shared<Keeko::BoardDigitalIO>
             (
-                14, //GPIO pin
+                10, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::DOWN //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
             )
         },
-        ControllerButtonInput{
+        ControllerButtonInput{// LIFT_MIDDLE
             1, //Controller button ID
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                11, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+            )
+        },
+        ControllerButtonInput{//LIFT_BOTTOM
+            2, //Controller button ID
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                12, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+            )
+        },
+        ControllerButtonInput{//INTAKE
+            3, //Controller button ID
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                13, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+            )
+        },
+        ControllerButtonInput{//OUTTAKE
+            4, //Controller button ID
             std::make_shared<Keeko::BoardDigitalIO>
             (
                 16, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
-                Keeko::DigitalIO::Pull::DOWN //Add a pull down resistor
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+            )
+        },
+        ControllerButtonInput{//ARM_EXTEND
+            5, //Controller button ID
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                17, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+            )
+        },
+        ControllerButtonInput{//LIFT_ABSOLUTE
+            6, //Controller button ID
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                18, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+            )
+        },
+        ControllerButtonInput{//CUBE_NOTIFY
+            7, //Controller button ID
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                19, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
+            )
+        },
+        ControllerButtonInput{//CONE_NOTIFY
+            8, //Controller button ID
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                22, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull down resistor
             )
         }
     };
+
+    uint32_t collectControllerButtons();
     
 };

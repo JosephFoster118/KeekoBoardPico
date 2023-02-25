@@ -254,15 +254,24 @@ void KeekoBoard::controllerTask()
         vTaskDelayUntil(&last_wake_time, period);
         taskENTER_CRITICAL();
         xSemaphoreTake(tusb_mutex, portMAX_DELAY);
-        //Test values
-        hid_gamepad_report_t report =
-        {
-            .x   = int8_t(counter%32*4), .y = int8_t(counter%32*4), .z = int8_t(counter%32*4), .rz = 0, .rx = 0, .ry = 0,
-            .hat = uint8_t(counter%9), .buttons = Keeko::highBitByIndex<uint32_t>(6) | Keeko::highBitByIndex<uint32_t>(30)
-        };
+        hid_gamepad_report_t report{0,};
+        report.buttons = collectControllerButtons();
         tud_hid_report(REPORT_ID_GAMEPAD, &report, sizeof(report));
         xSemaphoreGive(tusb_mutex);
         taskEXIT_CRITICAL();
         counter++;
     }
+}
+
+uint32_t KeekoBoard::collectControllerButtons()
+{
+    uint32_t result = 0;
+    for(const ControllerButtonInput& button_input: CONTROLLER_BUTTON_MAP)
+    {
+        if(!button_input.gpio_input->getValue())
+        {
+            result |= Keeko::highBitByIndex<decltype(result)>(button_input.controller_button_id);
+        }
+    }
+    return result;
 }
