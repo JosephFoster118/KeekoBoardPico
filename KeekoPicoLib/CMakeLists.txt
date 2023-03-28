@@ -20,6 +20,8 @@ set(SOURCES
     src/USBUart.cpp
     src/DigitalIO.cpp
     src/BoardDigitalIO.cpp
+    src/ADC.cpp
+    src/BoardADC.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
@@ -27,6 +29,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/in
 target_link_libraries(${PROJECT_NAME}
     pico_stdlib
     hardware_uart
+    hardware_adc
     tinyusb_host
     tinyusb_device
     tinyusb_board

@@ -248,6 +248,7 @@ void KeekoBoard::controllerTask()
     vTaskDelay(pdMS_TO_TICKS(1000));//Let everything boot up
     auto last_wake_time = xTaskGetTickCount();
     auto period = pdMS_TO_TICKS(50);
+    Keeko::BoardADC test_adc(0);
     uint32_t counter = 0;
     for(;;)
     {
@@ -255,6 +256,7 @@ void KeekoBoard::controllerTask()
         taskENTER_CRITICAL();
         xSemaphoreTake(tusb_mutex, portMAX_DELAY);
         hid_gamepad_report_t report{0,};
+        report.x = static_cast<int8_t>(static_cast<int16_t>(test_adc.getValue() >> 4) - 128);
         report.buttons = collectControllerButtons();
         tud_hid_report(REPORT_ID_GAMEPAD, &report, sizeof(report));
         xSemaphoreGive(tusb_mutex);

@@ -30,6 +30,7 @@
 #include "Keeko/KeekoMessage.h"
 #include "Keeko/DigitalIO.h"
 #include "Keeko/BoardDigitalIO.h"
+#include "Keeko/BoardADC.h"
 
 class KeekoBoard
 {
@@ -121,7 +122,7 @@ private:
         std::shared_ptr<Keeko::DigitalIO> gpio_input;
     };
     
-    std::array<ControllerButtonInput, 9> CONTROLLER_BUTTON_MAP = 
+    std::array<ControllerButtonInput, 12> CONTROLLER_BUTTON_MAP = 
     {
 
         ControllerButtonInput{// LIFT_TOP
@@ -201,6 +202,33 @@ private:
             std::make_shared<Keeko::BoardDigitalIO>
             (
                 22, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
+            )
+        },
+        {
+            9,
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                4, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
+            )
+        },
+        {
+            10,
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                3, //GPIO pin
+                Keeko::DigitalIO::Direction::INPUT, //It is an input
+                Keeko::DigitalIO::Pull::UP //Add a pull up resistor
+            )
+        },
+        {
+            11,
+            std::make_shared<Keeko::BoardDigitalIO>
+            (
+                2, //GPIO pin
                 Keeko::DigitalIO::Direction::INPUT, //It is an input
                 Keeko::DigitalIO::Pull::UP //Add a pull up resistor
             )
